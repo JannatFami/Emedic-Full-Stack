@@ -119,7 +119,7 @@ export const Navbar = () => {
               </ul>
             </li>
             <li>
-              <Link to="/login">Doctors</Link>
+              <Link to="/alldoctors">Doctors</Link>
             </li>
             <li>
               <Link to="/login">Contact us</Link>
@@ -132,7 +132,7 @@ export const Navbar = () => {
               <label tabindex="0" class="">
                 <div class="avatar">
                   <div class=" animate-pulse w-10 rounded-full">
-                    <img src={user.photoURL} alt="profile"/>
+                    <img src={user.photoURL} alt="profile" />
                   </div>
                 </div>
               </label>
