@@ -5,7 +5,7 @@ import useDoctorlist from "../../hooks/useDoctorlist";
 const AllDoctors = () => {
   const [doctorlist] = useDoctorlist();
   return (
-    <main className="grid grid-cols-4 gap-4">
+    <main className="grid md:grid-cols-3 2xl:grid-cols-6 gap-4">
       {doctorlist.map((index, doctor) => (
         <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 dark:bg-gray-900 dark:text-gray-100">
           <img

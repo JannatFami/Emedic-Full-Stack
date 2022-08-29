@@ -1,6 +1,9 @@
 const colors = require("tailwindcss/colors");
 module.exports = {
-  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
     colors: {
       transparent: "transparent",
@@ -64,5 +67,11 @@ module.exports = {
     },
   },
   variants: {},
-  plugins: [require("daisyui")],
+  plugins: [
+    require("flowbite/plugin"),
+    require("daisyui"),
+    require("@tailwindcss/forms")({
+      strategy: "class",
+    }),
+  ],
 };

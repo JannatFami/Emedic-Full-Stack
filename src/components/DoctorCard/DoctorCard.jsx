@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
+
 export const DoctorCard = (props) => {
-  const { img, name, degree, speciality, chember } = props.doctor;
+  const { _id, img, name, degree, speciality, chember } = props.doctor;
   return (
     <div className="">
       <div class="card w-96 bg-base-100 h-[40rem] shadow-xl">
@@ -19,7 +21,9 @@ export const DoctorCard = (props) => {
           <p className="text-black">{speciality || "speciality"}</p>
           <p className="text-black">{chember || "chember"}</p>
           <div class="card-actions">
-            <button class="btn btn-primary">Get Appoinment</button>
+            <Link className="t-n" to={`/appointment/${_id}`}>
+              <button class="btn btn-primary">Get Appoinment</button>
+            </Link>
           </div>
         </div>
       </div>

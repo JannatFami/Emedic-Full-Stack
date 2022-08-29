@@ -1,5 +1,8 @@
+import { Link } from "react-router-dom";
+
 export const DoctorTypeCard = (data) => {
   const {
+    _id,
     name,
     Mail,
     chember,
@@ -20,7 +23,9 @@ export const DoctorTypeCard = (data) => {
           <p>{speciality}</p>
           <p className="card-title">{department}</p>
           <div class="card-actions justify-end">
-            <button class="btn btn-primary">Get Appoinment</button>
+            <Link className="t-n" to={`/appointment/${_id}`}>
+              <button class="btn btn-primary">Get Appoinment</button>
+            </Link>
           </div>
         </div>
       </div>

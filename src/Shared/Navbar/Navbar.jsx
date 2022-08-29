@@ -1,3 +1,4 @@
+import { connectStorageEmulator } from "firebase/storage";
 import { BiLogOut } from "react-icons/bi";
 import { FcBusinessman } from "react-icons/fc";
 import { Link } from "react-router-dom";
@@ -5,8 +6,9 @@ import useAuth from "../../hooks/useAuth";
 
 export const Navbar = () => {
   const { user, logout, admin, doctor } = useAuth();
+
   return (
-    <div>
+    <div className="fixed w-full z-50">
       <div class="navbar bg-base-100">
         <div class="navbar-start">
           <div class="dropdown">
@@ -60,6 +62,7 @@ export const Navbar = () => {
               </li>
             </ul>
           </div>
+
           <Link to="/home" class="btn btn-ghost normal-case text-xl">
             <img
               src="https://x-tention.com/sites/default/files/2022-02/icon_umgebung_gr%C3%BCn.png"
@@ -80,14 +83,14 @@ export const Navbar = () => {
             </li>
             <li className="dropdown">
               <label tabindex="0" class="">
-                Patient
+                Doctors
               </label>
               <ul
                 tabindex="0"
                 class=" menu dropdown-content p-2 shadow bg-base-100 rounded-box w-64"
               >
                 <li>
-                  <Link to="/doctors/chest">Chest</Link>
+                  <Link to="/doctors/Chest">Chest</Link>
                 </li>
                 <li>
                   <Link to="/doctors/Medicine">Medicine</Link>
@@ -99,7 +102,7 @@ export const Navbar = () => {
                   <Link to="/doctors/Dermatology">Dermatology</Link>
                 </li>
                 <li>
-                  <Link to="/doctors/Psychaiatry">Psychaiatry</Link>
+                  <Link to="/doctors/Psychiatry">Psychaiatry</Link>
                 </li>
                 <li>
                   <Link to="/doctors/General Physician">General Physician</Link>
@@ -118,16 +121,14 @@ export const Navbar = () => {
                 </li>
               </ul>
             </li>
-            <li>
-              <Link to="/alldoctors">Doctors</Link>
-            </li>
+
             <li>
               <Link to="/login">Contact us</Link>
             </li>
           </ul>
         </div>
         <div class="navbar-end">
-          {Object.keys(user).length != 0 ? (
+          {Object.keys(user).length !== 0 ? (
             <div class="dropdown">
               <label tabindex="0" class="">
                 <div class="avatar">
@@ -138,7 +139,7 @@ export const Navbar = () => {
               </label>
               <ul
                 tabindex="0"
-                class="mt-3 dropdown-content menu p-2 shadow bg-base-100 w-52 ml-[-170px]"
+                class="mt-3 dropdown-content menu p-2 shadow bg-base-100 w-72 ml-[-250px]"
               >
                 <li>
                   <h2 for="my-modal" className="">
@@ -146,6 +147,71 @@ export const Navbar = () => {
                     {user.displayName}
                   </h2>
                 </li>
+
+                {Object.keys(admin).length !== 0 ? (
+                  <>
+                    <li>
+                      <h2 for="my-modal" className="">
+                        <FcBusinessman />
+                        Add Docotrs
+                      </h2>
+                    </li>
+                    <li>
+                      <h2 for="my-modal" className="">
+                        <FcBusinessman />
+                        Manage Doctor
+                      </h2>
+                    </li>
+                    <li>
+                      <h2 for="my-modal" className="">
+                        <FcBusinessman />
+                        Manage Admin
+                      </h2>
+                    </li>
+                    <li>
+                      <h2 for="my-modal" className="">
+                        <FcBusinessman />
+                        Patient Details
+                      </h2>
+                    </li>
+                    <li>
+                      <h2 for="my-modal" className="">
+                        <FcBusinessman />
+                        User Profile
+                      </h2>
+                    </li>
+                  </>
+                ) : null}
+                {Object.keys(doctor).length !== 0 ? (
+                  <>
+                    <li>
+                      <Link to="doctor/dashbord">
+                        <h2 for="my-modal" className="">
+                          <FcBusinessman /> Dashbord
+                        </h2>
+                      </Link>
+                    </li>
+                  </>
+                ) : null}
+                {Object.keys(doctor).length === 0 &&
+                Object.keys(admin).length === 0 ? (
+                  <>
+                    <li>
+                      <Link to="my-appoinments">
+                        <h2 for="my-modal" className="">
+                          <FcBusinessman />
+                          My Appoinment
+                        </h2>
+                      </Link>
+                    </li>
+                    <li>
+                      <h2 for="my-modal" className="">
+                        <FcBusinessman />
+                        My Prescription
+                      </h2>
+                    </li>
+                  </>
+                ) : null}
                 <li>
                   <label
                     for="my-modal"

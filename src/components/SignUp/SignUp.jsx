@@ -24,7 +24,7 @@ export const SignUp = () => {
 
   const saveUser = (email, displayName) => {
     const user = { email, displayName };
-    axios.post("https://project-101-doctor.herokuapp.com/users/", user);
+    axios.post("https://ruseable.onrender.com/users/", user);
   };
   const onSubmit = (data) => {
     const pass = data.password1;
@@ -41,7 +41,7 @@ export const SignUp = () => {
       alert("Password Not Matched");
       return;
     }
-    axios.post("https://project-101-doctor.herokuapp.com/reg-user-info", data);
+    axios.post("https://ruseable.onrender.com/reg-user-info", data);
     registerUser(name, email, pass)
       .then((userCredential) => {
         const updatedUser = { email, displayName: name };

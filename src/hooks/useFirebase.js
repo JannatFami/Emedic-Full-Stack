@@ -14,8 +14,8 @@ import initializeAuthentication from "../firebase/firebase.init";
 initializeAuthentication();
 const useFirebase = () => {
   const [user, SetUser] = useState({});
-  const [admin, setAdmin] = useState(false);
-  const [doctor, setDoctor] = useState(false);
+  const [admin, setAdmin] = useState({});
+  const [doctor, setDoctor] = useState({});
   const auth = getAuth();
   const gProvider = new GoogleAuthProvider();
   const signInGoogle = () => {
@@ -46,14 +46,13 @@ const useFirebase = () => {
     });
   });
   useEffect(() => {
-    fetch(`https://project-101-doctor.herokuapp.com/users/${user.email}`)
+    fetch(`https://ruseable.onrender.com/users/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
-        setAdmin(data.admin);
-        setDoctor(data.doctor);
+        data.admin ? setAdmin(data) : setAdmin({});
+        data.doctor ? setDoctor(data) : setDoctor({});
       });
   }, [user.email]);
-
   return {
     auth,
     user,
